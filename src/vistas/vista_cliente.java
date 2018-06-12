@@ -64,6 +64,7 @@ public class vista_cliente extends javax.swing.JFrame {
         elemento_crear = new javax.swing.JButton();
         elemento_modificar = new javax.swing.JButton();
         elemento_eliminar = new javax.swing.JButton();
+        elemento_plan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,23 +107,31 @@ public class vista_cliente extends javax.swing.JFrame {
             }
         });
 
+        elemento_plan.setText("Plan");
+        elemento_plan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elemento_planActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(elemento_crear)
-                        .addGap(18, 18, 18)
-                        .addComponent(elemento_modificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(elemento_eliminar)))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(elemento_crear)
+                .addGap(18, 18, 18)
+                .addComponent(elemento_modificar)
+                .addGap(18, 18, 18)
+                .addComponent(elemento_eliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(elemento_plan)
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +140,8 @@ public class vista_cliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(elemento_crear)
                     .addComponent(elemento_modificar)
-                    .addComponent(elemento_eliminar))
+                    .addComponent(elemento_eliminar)
+                    .addComponent(elemento_plan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -196,6 +206,14 @@ public class vista_cliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_elemento_eliminarActionPerformed
 
+    private void elemento_planActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elemento_planActionPerformed
+        // TODO add your handling code here:
+        vista_cliente.this.dispose();
+        vista_plan vista_plan = new vista_plan();
+        vista_plan.setVisible(true);
+        vista_plan.setLocationRelativeTo(null);
+    }//GEN-LAST:event_elemento_planActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -235,6 +253,7 @@ public class vista_cliente extends javax.swing.JFrame {
     private javax.swing.JButton elemento_crear;
     private javax.swing.JButton elemento_eliminar;
     private javax.swing.JButton elemento_modificar;
+    private javax.swing.JButton elemento_plan;
     private javax.swing.JTable elemento_tabla;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
