@@ -28,10 +28,10 @@ public class Tareas_servicio {
             if(tarea.getUno() == null){
                 consulta = conexion.prepareStatement("INSERT INTO " + this.tabla + "(uno, dos, tres, cuatro, cinco) VALUES(NULL, ?, ?, ?, ?)");
                 //consulta.setInt(1, tarea.getUno());
-                consulta.setString(2, tarea.getDos());
-                consulta.setString(3, tarea.getTres());
-                consulta.setInt(4, tarea.getCuatro());
-                consulta.setString(5, tarea.getCinco());
+                consulta.setString(1, tarea.getDos());
+                consulta.setString(2, tarea.getTres());
+                consulta.setInt(3, tarea.getCuatro());
+                consulta.setString(4, tarea.getCinco());
             }else{
                 consulta = conexion.prepareStatement("UPDATE " + this.tabla + " SET dos = ?, tres = ?, cuatro = ?, cinco = ? WHERE uno = ?");
                 consulta.setString(1, tarea.getDos());
@@ -46,14 +46,14 @@ public class Tareas_servicio {
         }
     }
     
-    public Tarea recuperarPorId(Connection conexion, int Uno) throws SQLException {
+    public Tarea recuperarPorId(Connection conexion, Integer uno) throws SQLException {
         Tarea tarea = null;
         try{
             PreparedStatement consulta = conexion.prepareStatement("SELECT uno, dos, tres, cuatro, cinco FROM " + this.tabla + " WHERE uno = ?" );
-            consulta.setInt(1, Uno);
+            consulta.setInt(1, uno);
             ResultSet resultado = consulta.executeQuery();
             while(resultado.next()){
-                tarea = new Tarea(Uno, resultado.getString("dos"), resultado.getString("tres"), resultado.getInt("cuatro"), resultado.getString("cinco"));
+                tarea = new Tarea(uno, resultado.getString("dos"), resultado.getString("tres"), resultado.getInt("cuatro"), resultado.getString("cinco"));
             }
         }catch(SQLException ex){
             throw new SQLException(ex);

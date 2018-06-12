@@ -39,7 +39,7 @@ public class vista_cliente extends javax.swing.JFrame {
                     this.tareas.get(i).getDos(),
                     this.tareas.get(i).getTres(),
                     this.tareas.get(i).getCuatro(),
-                    this.tareas.get(i).getCuatro()
+                    this.tareas.get(i).getCinco()
                 });
             }
         }catch(SQLException ex){
@@ -61,6 +61,9 @@ public class vista_cliente extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         elemento_tabla = new javax.swing.JTable();
+        elemento_crear = new javax.swing.JButton();
+        elemento_modificar = new javax.swing.JButton();
+        elemento_eliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,25 +85,116 @@ public class vista_cliente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(elemento_tabla);
 
+        elemento_crear.setText("Crear");
+        elemento_crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elemento_crearActionPerformed(evt);
+            }
+        });
+
+        elemento_modificar.setText("Modificar");
+        elemento_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elemento_modificarActionPerformed(evt);
+            }
+        });
+
+        elemento_eliminar.setText("Eliminar");
+        elemento_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elemento_eliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(elemento_crear)
+                        .addGap(18, 18, 18)
+                        .addComponent(elemento_modificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(elemento_eliminar)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(117, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(elemento_crear)
+                    .addComponent(elemento_modificar)
+                    .addComponent(elemento_eliminar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {                                  
+            // TODO add your handling code here:
+        } 
+    
+     private void formWindowClosing(java.awt.event.WindowEvent evt) {                                   
+        // TODO add your handling code here:
+        try{
+            Conexion.cerrar();
+            System.out.println("Conexión cerrada.");
+        }catch(SQLException ex){
+            System.out.println(ex.getMessage());
+        }
+    }    
+     
+    private void elemento_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elemento_crearActionPerformed
+        // TODO add your handling code here:
+        vista_cliente.this.dispose();
+        vista_guardar_cliente vista = new vista_guardar_cliente();
+        vista.setVisible(true);
+        vista.setLocationRelativeTo(null);
+    }//GEN-LAST:event_elemento_crearActionPerformed
+
+    private void elemento_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elemento_modificarActionPerformed
+        // TODO add your handling code here:
+        int fila_seleccionada = elemento_tabla.getSelectedRow();
+        if(fila_seleccionada >= 0){
+            vista_cliente.this.dispose();
+            vista_guardar_cliente vista = new vista_guardar_cliente(this.tareas.get(fila_seleccionada));
+            vista.setVisible(true);
+            vista.setLocationRelativeTo(null);
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor seleccione una fila.");
+        }
+    }//GEN-LAST:event_elemento_modificarActionPerformed
+
+    private void elemento_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elemento_eliminarActionPerformed
+        // TODO add your handling code here:
+        int fila_seleccionada = elemento_tabla.getSelectedRow();
+        if(fila_seleccionada >= 0){            
+            int decision = JOptionPane.showConfirmDialog(null, "¿Está seguro/a que desea eliminar esta tarea?", "Advertencia", JOptionPane.YES_NO_OPTION);            
+            if(decision == 0){
+                try{
+                    this.tareas_servicio.eliminar(Conexion.obtener(), this.tareas.get(fila_seleccionada));
+                    this.cargar_lista_de_tareas();
+                }catch(SQLException ex){
+                    System.out.println(ex.getMessage());
+                    JOptionPane.showMessageDialog(this, "Ha surgido un error y no se ha podido eliminar el registro.");
+                }catch(ClassNotFoundException ex){
+                    System.out.println(ex);
+                    JOptionPane.showMessageDialog(this, "Ha surgido un error y no se ha podido eliminar el registro.");
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor seleccione una fila.");
+        }
+    }//GEN-LAST:event_elemento_eliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,6 +232,9 @@ public class vista_cliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton elemento_crear;
+    private javax.swing.JButton elemento_eliminar;
+    private javax.swing.JButton elemento_modificar;
     private javax.swing.JTable elemento_tabla;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

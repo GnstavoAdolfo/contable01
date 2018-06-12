@@ -12,7 +12,7 @@ package modelos;
  */
 public class Tarea {
     
-    private final Integer uno;
+    private Integer uno;
     private String dos;
     private String tres;
     private Integer cuatro;
@@ -54,6 +54,10 @@ public class Tarea {
         return cinco;
     }
 
+    public void setUno(Integer uno) {
+        this.uno = uno;
+    }
+    
     public void setDos(String dos) {
         this.dos = dos;
     }
