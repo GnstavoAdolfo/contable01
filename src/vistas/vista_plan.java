@@ -138,10 +138,15 @@ public class vista_plan extends javax.swing.JFrame {
 
     private void elemento_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elemento_crearActionPerformed
         // TODO add your handling code here:
-            vista_plan.this.dispose();
-            vista_guardar_plan vista = new vista_guardar_plan();
-            vista.setVisible(true);
-            vista.setLocationRelativeTo(null); 
+            int fila_seleccionada = elemento_tabla.getSelectedRow();
+            if(fila_seleccionada >= 0){
+                vista_plan.this.dispose();
+                vista_crear_plan vista = new vista_crear_plan(this.tareas.get(fila_seleccionada));
+                vista.setVisible(true);
+                vista.setLocationRelativeTo(null);
+            }else{
+                JOptionPane.showMessageDialog(this, "Por favor seleccione una fila anterior al punto de creacion.");
+            }
     }//GEN-LAST:event_elemento_crearActionPerformed
 
     private void elemento_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elemento_modificarActionPerformed

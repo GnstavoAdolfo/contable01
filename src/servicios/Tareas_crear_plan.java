@@ -19,7 +19,7 @@ import modelos.Tarea_plan;
  * 
  * @author Fernando
  */
-public class Tareas_plan {
+public class Tareas_crear_plan {
     
     private final String tabla = "db_plan";
 
