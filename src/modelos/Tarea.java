@@ -76,7 +76,7 @@ public class Tarea {
     
     @Override
     public String toString() {
-        return "Tarea{" + "uno" + uno + ", dos=" + dos + ", tres=" + tres + ", cuatro=" + cuatro + ",cinco=" + cinco + '}';
+        return "Tarea{" + "uno=" + uno + ", dos=" + dos + ", tres=" + tres + ", cuatro=" + cuatro + ",cinco=" + cinco + '}';
     }
     
 }

@@ -56,7 +56,7 @@ public class Tarea_plan {
     
     @Override
     public String toString() {
-        return "Tarea_plan{" + "a1" + a1 + ", a2=" + a2 + ", a3=" + a3 + '}';
+        return "Tarea_plan{" + "a1=" + a1 + ", a2=" + a2 + ", a3=" + a3 + '}';
     }
     
 }

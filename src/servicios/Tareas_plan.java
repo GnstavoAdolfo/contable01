@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 import modelos.Tarea_plan;
 
 /**
@@ -21,6 +22,7 @@ import modelos.Tarea_plan;
 public class Tareas_plan {
     
     private final String tabla = "db_plan";
+
     
     public void guardar(Connection conexion, Tarea_plan tarea) throws SQLException{
         try{

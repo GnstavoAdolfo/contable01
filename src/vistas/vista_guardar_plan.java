@@ -15,7 +15,6 @@ import servicios.Tareas_plan;
  * @author Master Kaizen - MK
  */
 public class vista_guardar_plan extends javax.swing.JFrame {
-    
     private final Tareas_plan tareas_plan = new Tareas_plan();
     private final Tarea_plan tarea_plan;
     /**
@@ -29,9 +28,13 @@ public class vista_guardar_plan extends javax.swing.JFrame {
     public vista_guardar_plan(Tarea_plan p_tarea){
         this.tarea_plan = p_tarea;
         initComponents();
+        //Integer elemento_id = this.tarea_plan.getA1();
         elemento_cuenta.setText(this.tarea_plan.getA2());
         elemento_descripcion.setText(this.tarea_plan.getA3());
+        //System.out.println("Id=" + elemento_id);
     }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,7 +119,7 @@ public class vista_guardar_plan extends javax.swing.JFrame {
     private void elemento_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elemento_guardarActionPerformed
         // TODO add your handling code here:
         if(this.validar()){
-            this.guardar();
+                this.guardar();
         }else{
             JOptionPane.showMessageDialog(this, "Hay campos incompletos.");
         }
@@ -179,6 +182,8 @@ public class vista_guardar_plan extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Ha surgido un error y no se ha podido guardar el registro.");
         }
     }
+    
+    
     /**
      * @param args the command line arguments
      */
