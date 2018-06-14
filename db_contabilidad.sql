@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 13-06-2018 a las 20:46:11
--- Versión del servidor: 5.7.14
--- Versión de PHP: 7.0.10
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 14-06-2018 a las 01:50:14
+-- Versión del servidor: 5.7.19
+-- Versión de PHP: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -26,13 +28,15 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `db_cliente`
 --
 
-CREATE TABLE `db_cliente` (
-  `uno` int(5) NOT NULL,
+DROP TABLE IF EXISTS `db_cliente`;
+CREATE TABLE IF NOT EXISTS `db_cliente` (
+  `uno` int(5) NOT NULL AUTO_INCREMENT,
   `dos` varchar(11) COLLATE utf8mb4_bin NOT NULL,
   `tres` varchar(200) COLLATE utf8mb4_bin NOT NULL,
   `cuatro` int(1) NOT NULL,
-  `cinco` varchar(1) COLLATE utf8mb4_bin NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+  `cinco` varchar(1) COLLATE utf8mb4_bin NOT NULL,
+  PRIMARY KEY (`uno`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Volcado de datos para la tabla `db_cliente`
@@ -45,14 +49,48 @@ INSERT INTO `db_cliente` (`uno`, `dos`, `tres`, `cuatro`, `cinco`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `db_compra`
+--
+
+DROP TABLE IF EXISTS `db_compra`;
+CREATE TABLE IF NOT EXISTS `db_compra` (
+  `a1` int(5) NOT NULL AUTO_INCREMENT,
+  `a2` int(5) NOT NULL,
+  `a3` varchar(10) COLLATE utf8_bin NOT NULL,
+  `a4` varchar(2) COLLATE utf8_bin NOT NULL,
+  `a5` varchar(10) COLLATE utf8_bin NOT NULL,
+  `a6` varchar(10) COLLATE utf8_bin NOT NULL,
+  `a7` varchar(11) COLLATE utf8_bin NOT NULL,
+  `a8` varchar(200) COLLATE utf8_bin NOT NULL,
+  `a9` varchar(10) COLLATE utf8_bin NOT NULL,
+  `a10` varchar(10) COLLATE utf8_bin NOT NULL,
+  `a11` varchar(10) COLLATE utf8_bin NOT NULL,
+  `a12` int(15) NOT NULL,
+  `a13` int(15) NOT NULL,
+  `a14` int(15) NOT NULL,
+  `a15` int(15) NOT NULL,
+  `a16` int(15) NOT NULL,
+  `a17` int(15) NOT NULL,
+  `a18` varchar(10) COLLATE utf8_bin NOT NULL,
+  `a19` varchar(10) COLLATE utf8_bin NOT NULL,
+  `a20` varchar(10) COLLATE utf8_bin NOT NULL,
+  `a21` varchar(10) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`a1`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `db_plan`
 --
 
-CREATE TABLE `db_plan` (
-  `a1` int(11) NOT NULL,
+DROP TABLE IF EXISTS `db_plan`;
+CREATE TABLE IF NOT EXISTS `db_plan` (
+  `a1` int(11) NOT NULL AUTO_INCREMENT,
   `a2` varchar(20) COLLATE utf8_bin NOT NULL,
-  `a3` varchar(500) COLLATE utf8_bin NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `a3` varchar(500) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`a1`)
+) ENGINE=MyISAM AUTO_INCREMENT=1788 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `db_plan`
@@ -1847,37 +1885,8 @@ INSERT INTO `db_plan` (`a1`, `a2`, `a3`) VALUES
 (1785, '08', 'OTRAS CUENTAS DE ORDEN ACREEDORAS '),
 (1786, '89', 'Diversas '),
 (1787, '09', 'ACREEDORAS POR CONTRA ');
+COMMIT;
 
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `db_cliente`
---
-ALTER TABLE `db_cliente`
-  ADD PRIMARY KEY (`uno`);
-
---
--- Indices de la tabla `db_plan`
---
-ALTER TABLE `db_plan`
-  ADD PRIMARY KEY (`a1`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `db_cliente`
---
-ALTER TABLE `db_cliente`
-  MODIFY `uno` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT de la tabla `db_plan`
---
-ALTER TABLE `db_plan`
-  MODIFY `a1` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1788;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
