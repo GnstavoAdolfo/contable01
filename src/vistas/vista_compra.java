@@ -5,19 +5,31 @@
  */
 package vistas;
 
+import java.sql.SQLException;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelos.Tarea_plan;
+import servicios.Conexion;
+import servicios.Tareas_plan;
+import vistas.vista_plan2;
 /**
  *
  * @author Usuario
  */
 public class vista_compra extends javax.swing.JFrame {
-
+    
+    private final vista_plan2 plan = new vista_plan2();
+    
     /**
      * Creates new form vista_compra
      */
     public vista_compra() {
         initComponents();
+        
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -104,6 +116,11 @@ public class vista_compra extends javax.swing.JFrame {
         jLabel10.setText("ITEM");
 
         elemento_cargo_2.setText("2");
+        elemento_cargo_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elemento_cargo_2ActionPerformed(evt);
+            }
+        });
 
         elemento_cargo_3.setText("3");
 
@@ -349,6 +366,14 @@ public class vista_compra extends javax.swing.JFrame {
     private void elemento_abono_cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elemento_abono_cuentaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_elemento_abono_cuentaActionPerformed
+
+    private void elemento_cargo_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elemento_cargo_2ActionPerformed
+        // TODO add your handling code here:
+        //vista_plan2.this.dispose();
+        this.plan.setVisible(true);
+        //vista.setVisible(true);
+        //vista.setLocationRelativeTo(null);
+    }//GEN-LAST:event_elemento_cargo_2ActionPerformed
 
     /**
      * @param args the command line arguments
