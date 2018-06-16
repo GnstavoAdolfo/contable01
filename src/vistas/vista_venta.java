@@ -32,7 +32,7 @@ public class vista_venta extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         elemento_nregistro = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        elemento_fecha = new javax.swing.JTextField();
+        elemento_femision = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         elemento_comprobantetipo = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
@@ -158,7 +158,7 @@ public class vista_venta extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addGap(18, 18, 18)
-                                    .addComponent(elemento_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(elemento_femision, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel3)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -255,7 +255,7 @@ public class vista_venta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(elemento_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(elemento_femision, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -386,7 +386,7 @@ public class vista_venta extends javax.swing.JFrame {
     private javax.swing.JRadioButton elemento_contado;
     private javax.swing.JRadioButton elemento_credito;
     private javax.swing.JTextField elemento_credito_letras;
-    private javax.swing.JTextField elemento_fecha;
+    private javax.swing.JTextField elemento_femision;
     private javax.swing.JTextField elemento_formapago_cuenta;
     private javax.swing.JTextField elemento_formapago_descripcion;
     private javax.swing.JTextField elemento_gravada;
