@@ -19,7 +19,7 @@ import vistas.vista_plan2;
  */
 public class vista_compra extends javax.swing.JFrame {
     
-    private final vista_plan2 plan = new vista_plan2();
+    //private final vista_plan2 plan = new vista_plan2();
     
     /**
      * Creates new form vista_compra
@@ -123,8 +123,18 @@ public class vista_compra extends javax.swing.JFrame {
         });
 
         elemento_cargo_3.setText("3");
+        elemento_cargo_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elemento_cargo_3ActionPerformed(evt);
+            }
+        });
 
         elemento_cargo_6.setText("6");
+        elemento_cargo_6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                elemento_cargo_6ActionPerformed(evt);
+            }
+        });
 
         elemento_abono.setText("ABONO");
 
@@ -370,10 +380,27 @@ public class vista_compra extends javax.swing.JFrame {
     private void elemento_cargo_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elemento_cargo_2ActionPerformed
         // TODO add your handling code here:
         //vista_plan2.this.dispose();
-        this.plan.setVisible(true);
+        
+        vista_plan2 plan = new vista_plan2();
+        plan.cargar_lista_de_tareas("2");
+        plan.setVisible(true);
         //vista.setVisible(true);
         //vista.setLocationRelativeTo(null);
     }//GEN-LAST:event_elemento_cargo_2ActionPerformed
+
+    private void elemento_cargo_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elemento_cargo_3ActionPerformed
+        // TODO add your handling code here:
+        vista_plan2 plan = new vista_plan2();
+        plan.cargar_lista_de_tareas("3");
+        plan.setVisible(true);
+    }//GEN-LAST:event_elemento_cargo_3ActionPerformed
+
+    private void elemento_cargo_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elemento_cargo_6ActionPerformed
+        // TODO add your handling code here:
+        vista_plan2 plan = new vista_plan2();
+        plan.cargar_lista_de_tareas("6");
+        plan.setVisible(true);
+    }//GEN-LAST:event_elemento_cargo_6ActionPerformed
 
     /**
      * @param args the command line arguments

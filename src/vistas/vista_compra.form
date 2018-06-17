@@ -403,11 +403,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="elemento_cargo_3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="elemento_cargo_6">
       <Properties>
         <Property name="text" type="java.lang.String" value="6"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="elemento_cargo_6ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="elemento_abono">
       <Properties>

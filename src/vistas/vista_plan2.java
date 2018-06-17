@@ -20,25 +20,38 @@ public class vista_plan2 extends javax.swing.JFrame {
     
     private final Tareas_plan tareas_plan = new Tareas_plan();
     private List<Tarea_plan> tareas;
+    
     /**
      * Creates new form vista_plan
      */
     public vista_plan2() {
         initComponents();
-        this.cargar_lista_de_tareas();
+        //this.cargar_lista_de_tareas("2");
     }
     
-    private void cargar_lista_de_tareas(){
+    public void cargar_lista_de_tareas(String a){
         try{
             this.tareas = this.tareas_plan.recuperarTodas(Conexion.obtener());
             DefaultTableModel dtm = (DefaultTableModel) elemento_tabla.getModel();
             dtm.setRowCount(0);
+            String cuenta, numero;
+            numero = a;
             for(int i = 0; i < this.tareas.size(); i++){
-                dtm.addRow(new Object[]{
+                cuenta = this.tareas.get(i).getA2();
+                cuenta = cuenta.substring(0,1);
+                //System.out.println("cuenta="+ cuenta +"-");
+                if ( cuenta.equals(numero)) {
+                    //System.out.println("EN IF cuenta="+ cuenta);
+                    
+                    dtm.addRow(new Object[]{
                     this.tareas.get(i).getA1(),
                     this.tareas.get(i).getA2(),
                     this.tareas.get(i).getA3()
+                            
                 });
+                    
+                }
+                
             }
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
@@ -83,7 +96,7 @@ public class vista_plan2 extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(elemento_tabla);
 
-        elemento_crear.setText("Crear");
+        elemento_crear.setText("Seleccionar");
         elemento_crear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 elemento_crearActionPerformed(evt);
@@ -141,6 +154,7 @@ public class vista_plan2 extends javax.swing.JFrame {
             int fila_seleccionada = elemento_tabla.getSelectedRow();
             if(fila_seleccionada >= 0){
                 vista_plan2.this.dispose();
+                //vista_compra vista2 = new vista_compra(this.tareas.get(fila_seleccionada));
                 vista_crear_plan vista = new vista_crear_plan(this.tareas.get(fila_seleccionada));
                 vista.setVisible(true);
                 vista.setLocationRelativeTo(null);
@@ -170,7 +184,7 @@ public class vista_plan2 extends javax.swing.JFrame {
             if(decision == 0){
                 try{
                     this.tareas_plan.eliminar(Conexion.obtener(), this.tareas.get(fila_seleccionada));
-                    this.cargar_lista_de_tareas();
+                    this.cargar_lista_de_tareas("2");
                 }catch(SQLException ex){
                     System.out.println(ex.getMessage());
                     JOptionPane.showMessageDialog(this, "Ha surgido un error y no se ha podido eliminar el registro.");
@@ -215,6 +229,7 @@ public class vista_plan2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new vista_plan2().setVisible(true);
             }
         });
